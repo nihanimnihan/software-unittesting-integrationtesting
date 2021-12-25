@@ -31,14 +31,11 @@ class PaymentIntegrationTest {
     @Autowired
     private PaymentRepository paymentRepository;
 
-    @Autowired
-    private CardPaymentCharger cardPaymentCharger;
-
     @Test
     void itShouldCreatePaymentSuccessfully() throws Exception {
         // Given
         UUID customerId = UUID.randomUUID();
-        Customer customer = Customer.builder().id(customerId).name("Abc").phone("000").build();
+        Customer customer = Customer.builder().id(customerId).name("Abc").phone("+447000000000").build();
 
         ResultActions customerResultAction = mockMvc.perform(put("/api/v1/customer-registration")
                 .contentType(MediaType.APPLICATION_JSON)
